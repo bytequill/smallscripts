@@ -81,7 +81,10 @@ def main():
         con.print(P_CHK+"Got token from env")
     else:
         con.print(P_ERR+"Could not get token from env. Create a .env with the variable DC_TOKEN")
-        exit(1)
+        DC_TOKEN = con.input(P_INP+"[yellow]Fallback[/yellow] Please enter the token manually. It is reccomended to verify it: ")
+        if not DC_TOKEN and len(DC_TOKEN) == 0:
+            exit(1)
+        con.print(P_INF+"Token is "+DC_TOKEN)
     
     res = prompt_bool(con,P_INP+"Do you want to verify token?", False)
     if res:
